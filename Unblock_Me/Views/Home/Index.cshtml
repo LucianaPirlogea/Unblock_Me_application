@@ -1,33 +1,37 @@
-﻿@{
+﻿@model Unblock_Me.Views.Home.IndexModel
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <style>
-    .blocked{
+    .blocked {
         margin-top: 100px;
         margin-left: 500px;
         width: 200px;
         height: 200px;
-        
-    }
-    .i_blocked {
-        background-color: yellow;
     }
     .input-group {
         margin-top: 50px;
+    }
+    .input1{
+        width: 90%;
+    }
+    .i_blocked {
+        background-color: yellow;
     }
 </style>
 
 <div class="text-center">
     <h1 class="display-4">Search who blocked you</h1>
-    
+
 </div>
 
-<form method="get">
+
+<form>
     <div class="input-group">
-        <input class="form-control">
-        <div class="input-group-append">
-            <button type="submit" class="btn btn-primary">Search</button>
+        <input class="input1" type="text" asp-for="SearchString">
+        <div>
+            <button type="submit">Search</button>
         </div>
     </div>
 </form>

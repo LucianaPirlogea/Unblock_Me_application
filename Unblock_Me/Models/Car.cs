@@ -13,11 +13,12 @@ namespace Unblock_Me.Models
         public string Maker { get; set; }
         public string Model { get; set; }
         public string Colour { get; set; }
-        public string SearchTerm { get; set; }
+      
         public string BlockedLicencePlate { get; set; }
         public string BlockedByLicencePlate { get; set; }
         public Guid OwnerId { get; set; }
 
         public virtual User Owner { get; set; }
+        public string Title { get; internal set; }
     }
 }
