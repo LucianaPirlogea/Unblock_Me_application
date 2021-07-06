@@ -1,0 +1,38 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<style>
+    .blocked{
+        margin-top: 100px;
+        margin-left: 500px;
+        width: 200px;
+        height: 200px;
+        
+    }
+    .i_blocked {
+        background-color: yellow;
+    }
+    .input-group {
+        margin-top: 50px;
+    }
+</style>
+
+<div class="text-center">
+    <h1 class="display-4">Search who blocked you</h1>
+    
+</div>
+
+<form method="get">
+    <div class="input-group">
+        <input class="form-control">
+        <div class="input-group-append">
+            <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+    </div>
+</form>
+
+<div class="blocked">
+    <button type="submit" class="i_blocked">I blocked someone</button>
+</div>
+
