@@ -27,9 +27,9 @@
 </div>
 
 
-<form>
+<form asp-action="Search" asp-controller="Home">
     <div class="input-group">
-        <input class="input1" type="text" asp-for="SearchString">
+        <input class="input1" type="text" name="searchText">
         <div>
             <button type="submit">Search</button>
         </div>

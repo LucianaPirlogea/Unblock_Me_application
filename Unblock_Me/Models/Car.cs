@@ -16,9 +16,8 @@ namespace Unblock_Me.Models
       
         public string BlockedLicencePlate { get; set; }
         public string BlockedByLicencePlate { get; set; }
-        public Guid OwnerId { get; set; }
+        public string OwnerId { get; set; }
 
         public virtual User Owner { get; set; }
-        public string Title { get; internal set; }
     }
 }

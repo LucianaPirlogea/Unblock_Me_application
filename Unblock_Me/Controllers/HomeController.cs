@@ -12,11 +12,14 @@ namespace Unblock_Me.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private readonly Unblock_MeContext _dbContext;
+        public HomeController(ILogger<HomeController> logger, Unblock_MeContext dbContext)
         {
             _logger = logger;
+            _dbContext = dbContext;
         }
+
+       
 
         public IActionResult Index()
         {
@@ -32,6 +35,16 @@ namespace Unblock_Me.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        public IActionResult Search(string searchText) {
+            var car = _dbContext.Car.FirstOrDefault(car => car.LicencePlate == searchText);
+            if(car!=null)
+                return View(car);
+            else
+            {
+                return BadRequest();
+            }
         }
     }
 }

@@ -20,7 +20,6 @@ namespace Unblock_Me.Views.Home
                 _logger = logger;
             }
            
-
             private readonly Unblock_MeContext _context;
 
             public IndexModel(Unblock_MeContext context)
@@ -32,17 +31,6 @@ namespace Unblock_Me.Views.Home
             [BindProperty(SupportsGet = true)]
             public string SearchString { get; set; }
 
-            public async Task OnGetAsync()
-            {
-                var cars = from m in _context.Car
-                             select m;
-        
-                if (!string.IsNullOrEmpty(SearchString))
-                {
-                    cars = cars.Where(s => s.Title.Contains(SearchString));
-                }
-
-                Cars= await cars.ToListAsync();
-            }
+            
     }
     }
