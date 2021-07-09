@@ -8,6 +8,12 @@
         margin-top: 100px;
         margin-left: 500px;
         width: 200px;
+        height: 100px;
+    }
+    .blocked2 {
+        margin-top: 10px;
+        margin-left: 500px;
+        width: 200px;
         height: 200px;
     }
     .input-group {
@@ -17,7 +23,10 @@
         width: 90%;
     }
     .i_blocked {
-        background-color: yellow;
+        background-color: red;
+    }
+    .i_unblocked {
+        background-color: greenyellow;
     }
 </style>
 
@@ -36,7 +45,16 @@
     </div>
 </form>
 
-<div class="blocked">
-    <button type="submit" class="i_blocked">I blocked someone</button>
-</div>
 
+
+<form asp-action="I_blocked" asp-controller="Home">
+    <div class="blocked">
+        <button type="submit" class="i_blocked">I blocked someone</button>
+    </div>
+</form>
+
+<form asp-action="I_unblocked" asp-controller="Home">
+    <div class="blocked2">
+        <button type="submit" class="i_unblocked">I unblocked someone</button>
+    </div>
+</form>

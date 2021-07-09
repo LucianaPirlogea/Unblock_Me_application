@@ -19,8 +19,6 @@ namespace Unblock_Me.Controllers
             _dbContext = dbContext;
         }
 
-       
-
         public IActionResult Index()
         {
             return View();
@@ -41,6 +39,46 @@ namespace Unblock_Me.Controllers
             var car = _dbContext.Car.FirstOrDefault(car => car.LicencePlate == searchText);
             if(car!=null)
                 return View(car);
+            else
+            {
+                return BadRequest();
+            }
+        }
+
+        public IActionResult I_blocked()
+        {
+            return View();
+        }
+
+        public IActionResult I_unblocked()
+        {
+            return View();
+        }
+
+        public IActionResult Search_for_I_blocked(string searchText2, string searchText3)
+        {
+            var car = _dbContext.Car.FirstOrDefault(car => car.LicencePlate == searchText2);
+            if (car != null)
+            {
+                car.BlockedByLicencePlate = searchText3;
+                return View(car);
+            }
+            else
+            {
+                return BadRequest();
+            }
+        }
+        public IActionResult Search_for_I_unblocked(string searchText2, string searchText3)
+        {
+            
+            var car = _dbContext.Car.FirstOrDefault(car => car.LicencePlate == searchText2);
+            var car2 = _dbContext.Car.FirstOrDefault(car => car.LicencePlate == searchText3);
+            if (car != null && car.BlockedByLicencePlate==searchText3)
+            {
+                car.BlockedByLicencePlate = null;
+                car2.BlockedLicencePlate = null;
+                return View(car);
+            }
             else
             {
                 return BadRequest();
