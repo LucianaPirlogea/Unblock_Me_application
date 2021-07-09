@@ -1,9 +1,12 @@
-﻿@model Unblock_Me.Views.Home.IndexModel
+﻿
 @{
     ViewData["Title"] = "Home Page";
 }
 
 <style>
+    body{
+        background-color: aqua;
+    }
     .blocked {
         margin-top: 100px;
         margin-left: 500px;
@@ -47,13 +50,13 @@
 
 
 
-<form asp-action="I_blocked" asp-controller="Home">
+<form asp-action="I_blocked" asp-controller="Cars">
     <div class="blocked">
         <button type="submit" class="i_blocked">I blocked someone</button>
     </div>
 </form>
 
-<form asp-action="I_unblocked" asp-controller="Home">
+<form asp-action="I_unblocked" asp-controller="Cars">
     <div class="blocked2">
         <button type="submit" class="i_unblocked">I unblocked someone</button>
     </div>

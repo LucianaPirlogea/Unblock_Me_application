@@ -22,7 +22,7 @@ namespace Unblock_Me.Models
 
 
         public virtual DbSet<Car> Car { get; set; }
-        public virtual DbSet<Status> Status { get; set; }
+
         public virtual DbSet<User> User { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -79,26 +79,7 @@ namespace Unblock_Me.Models
                     .HasConstraintName("Fk_Car_AspNetUsers");
             });
 
-            modelBuilder.Entity<Status>(entity =>
-            {
-                entity.HasKey(e => e.MainLicensePlate);
-
-                entity.ToTable("status");
-
-                entity.Property(e => e.MainLicensePlate)
-                    .HasColumnName("main_license_plate")
-                    .HasMaxLength(20);
-
-                entity.Property(e => e.BlockedByLicensePlate)
-                    .HasColumnName("blockedBy_license_plate")
-                    .HasMaxLength(20);
-
-                entity.Property(e => e.BlockedLicensePlate)
-                    .HasColumnName("blocked_license_plate")
-                    .HasMaxLength(20);
-
-                entity.Property(e => e.NrBlockedCars).HasColumnName("nr_blocked_cars");
-            });
+            
 
             modelBuilder.Entity<User>(entity =>
             {
