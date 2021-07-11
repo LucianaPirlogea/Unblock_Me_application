@@ -16,6 +16,7 @@
         <th>Colour</th>
         <th>BlockedBy_LicencePlate</th>
         <th>Blocked_LicencePlate</th>
+        <th>Owner ID</th>
     </tr>
     <tr>
         <th>@Model.LicencePlate</th>
@@ -25,5 +26,6 @@
         <th>@Model.Colour</th>
         <th>@Model.BlockedByLicencePlate</th>
         <th>@Model.BlockedLicencePlate</th>
+        <th><a asp-controller="Home" asp-action="User" asp-route-id="@Model.OwnerId">@Model.OwnerId</a></th>
     </tr>
 </table>

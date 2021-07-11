@@ -1,0 +1,38 @@
+﻿@model User
+@{
+}
+
+<style>
+    table, th, td {
+        border: 1px solid black;
+    }
+    .sms {
+        margin-top: 100px;
+        margin-left: 500px;
+        width: 200px;
+        height: 100px;
+    }
+
+    .sms_ {
+        background-color: orangered;
+    }
+</style>
+<h1>Owner details:</h1>
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Email</th>
+        <th>Phone number</th>
+    </tr>
+    <tr>
+        <th>@Model.Id</th>
+        <th>@Model.Email</th>
+        <th>@Model.PhoneNumber</th>
+    </tr>
+</table>
+
+<form asp-action="SendSms" asp-controller="Sms">
+    <div class="sms">
+        <button type="submit" class="sms_">Send SMS</button>
+    </div>
+</form>

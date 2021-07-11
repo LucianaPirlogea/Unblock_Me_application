@@ -15,7 +15,6 @@ namespace Unblock_Me.Models
             Car = new HashSet<Car>();
         }
 
-        
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public int? Rating { get; set; }

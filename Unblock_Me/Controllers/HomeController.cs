@@ -47,6 +47,11 @@ namespace Unblock_Me.Controllers
             }
         }
 
+        public async Task<IActionResult> User(string Id)
+        {
+            var user = await _dbContext.Users.FindAsync(Id);
+            return View(user);
+        }
        
     }
 }

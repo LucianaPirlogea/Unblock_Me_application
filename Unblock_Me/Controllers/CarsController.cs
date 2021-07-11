@@ -172,7 +172,7 @@ namespace Unblock_Me.Controllers
         {
             var car = _context.Car.FirstOrDefault(car => car.LicencePlate == searchText2);
             var car2 = _context.Car.FirstOrDefault(car => car.LicencePlate == searchText3);
-            if (car != null)
+            if (car != null && car2.BlockedLicencePlate==null) // de tratat cand blocheaza alta masina
             {
                 car.BlockedByLicencePlate = searchText3;
                 car2.BlockedLicencePlate = searchText2;
@@ -180,9 +180,9 @@ namespace Unblock_Me.Controllers
                 return View(car);
             }
             else
-            {
-                return BadRequest();
-            }
+                {
+                    return BadRequest();
+                }
         }
         public async Task<IActionResult> Search_for_I_unblocked(string searchText2, string searchText3)
         {
