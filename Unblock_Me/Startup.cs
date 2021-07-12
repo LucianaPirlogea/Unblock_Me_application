@@ -13,6 +13,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Unblock_Me.Data;
 using Unblock_Me.Models;
+using Microsoft.AspNetCore.Http;
 
 
 namespace Unblock_Me
@@ -36,6 +37,7 @@ namespace Unblock_Me
                 .AddEntityFrameworkStores<Unblock_MeContext>();
             services.AddControllersWithViews();
             services.AddRazorPages();
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

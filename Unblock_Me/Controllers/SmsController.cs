@@ -12,7 +12,7 @@ namespace Unblock_Me.Controllers
         public IActionResult SendSms()
         {
             var accountSid = "AC9b481b628e6aa0f9668ed170e2c0c326";
-            var authToken = "1e88a04d1204437a37f94c343d0bd500";
+            var authToken = "de7934a7599937123c67283824012385";
             TwilioClient.Init(accountSid, authToken);
 
             var to = new PhoneNumber("+40754011618");

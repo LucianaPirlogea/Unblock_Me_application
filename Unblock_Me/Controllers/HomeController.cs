@@ -14,8 +14,8 @@ namespace Unblock_Me.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly Unblock_MeContext _dbContext;
-        public HomeController(ILogger<HomeController> logger, Unblock_MeContext dbContext)
+        private readonly Models.Unblock_MeContext _dbContext;
+        public HomeController(ILogger<HomeController> logger, Models.Unblock_MeContext dbContext)
         {
             _logger = logger;
             _dbContext = dbContext;
