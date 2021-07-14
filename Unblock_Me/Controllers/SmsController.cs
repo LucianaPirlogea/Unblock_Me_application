@@ -9,7 +9,7 @@ namespace Unblock_Me.Controllers
 {
     public class SmsController : Controller
     {
-        public IActionResult SendSms()
+        public IActionResult SendSms(string text)
         {
             var accountSid = "AC9b481b628e6aa0f9668ed170e2c0c326";
             var authToken = "de7934a7599937123c67283824012385";
@@ -21,7 +21,7 @@ namespace Unblock_Me.Controllers
             var message = MessageResource.Create(
                 to: to,
                 from: from,
-                body: "Frate, ma blocasi in parcare."
+                body: text
                 );
             return View();
         }

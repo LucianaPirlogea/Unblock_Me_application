@@ -7,7 +7,6 @@
         border: 1px solid black;
     }
     .sms {
-        margin-top: 100px;
         margin-left: 500px;
         width: 200px;
         height: 100px;
@@ -15,6 +14,11 @@
 
     .sms_ {
         background-color: orangered;
+    }
+    #custom {
+        margin-top: 100px;
+        margin-left: 500px;
+        width: 200px;
     }
 </style>
 <h1>Owner details:</h1>
@@ -32,6 +36,7 @@
 </table>
 
 <form asp-action="SendSms" asp-controller="Sms">
+    <input id="custom" name="text" type="text" placeholder="Type your message here"/>
     <div class="sms">
         <button type="submit" class="sms_">Send SMS</button>
     </div>

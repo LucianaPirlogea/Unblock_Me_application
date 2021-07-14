@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -172,7 +173,7 @@ namespace Unblock_Me.Controllers
         {
             var car = _context.Car.FirstOrDefault(car => car.LicencePlate == searchText2);
             var car2 = _context.Car.FirstOrDefault(car => car.LicencePlate == searchText3);
-            if (car != null && car2.BlockedLicencePlate == null) // de tratat cand blocheaza alta masina
+            if (car != null && car2.BlockedLicencePlate == null && searchText2 != searchText3) 
             {
                 car.BlockedByLicencePlate = searchText3;
                 car2.BlockedLicencePlate = searchText2;
@@ -189,7 +190,7 @@ namespace Unblock_Me.Controllers
 
             var car = _context.Car.FirstOrDefault(car => car.LicencePlate == searchText2);
             var car2 = _context.Car.FirstOrDefault(car => car.LicencePlate == searchText3);
-            if (car != null && car.BlockedByLicencePlate == searchText3)
+            if (car != null && car.BlockedByLicencePlate == searchText3 && searchText2!=searchText3)
             {
                 car.BlockedByLicencePlate = null;
                 car2.BlockedLicencePlate = null;

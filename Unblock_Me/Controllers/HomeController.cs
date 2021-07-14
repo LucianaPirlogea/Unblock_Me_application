@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Unblock_Me.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace Unblock_Me.Controllers
 {
@@ -20,11 +21,13 @@ namespace Unblock_Me.Controllers
             _logger = logger;
             _dbContext = dbContext;
         }
+    
 
         public IActionResult Index()
         {
             return View();
         }
+
 
         public IActionResult Privacy()
         {
@@ -36,6 +39,27 @@ namespace Unblock_Me.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+        /*
+        [Produces("application/json")]
+        [HttpGet("Search2")]
+        public async Task<IActionResult> Search2()
+        {
+            try
+            {
+                string term = HttpContext.Request.Query["term"].ToString();
+                var postTitle = _dbContext.Car.Where(p => p.LicencePlate.Contains(term)).Select(p => p.LicencePlate).ToList();
+                return Ok(postTitle);
+            }
+            catch
+            {
+                return BadRequest();
+            }
+        }
+        */
+        public IActionResult DontExist()
+        {
+            return View();
+        }
 
         public IActionResult Search(string searchText) {
             var car = _dbContext.Car.FirstOrDefault(car => car.LicencePlate == searchText);
@@ -43,9 +67,10 @@ namespace Unblock_Me.Controllers
                 return View(car);
             else
             {
-                return BadRequest();
+                return DontExist();
             }
         }
+
 
         public async Task<IActionResult> User(string Id)
         {

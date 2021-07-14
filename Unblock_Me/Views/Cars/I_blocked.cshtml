@@ -3,16 +3,26 @@
 *@
 @{
 }
+<style>
+    .input_1, .input_2{
+        display:block;
+    }
+</style>
 <form asp-action="Search_for_I_blocked" asp-controller="Cars">
     <div class="input-group">
-        <label for="input1">
-            Type who you blocked
-        </label>
-        <input id="input1" type="text" name="searchText2">
-        <label for="input2">
-            Type your license plate
-        </label>
-        <input id="input2" type="text" name="searchText3">
+        <div class="input_1">
+            <label for="input1">
+                Type who you blocked
+            </label>
+            <input id="input1" type="text" name="searchText2">
+        </div>
+        <br />
+        <div class="input_2">
+            <label for="input2">
+                Type your license plate
+            </label>
+            <input id="input2" type="text" name="searchText3">
+        </div>
         <div>
             <button type="submit">Submit</button>
         </div>

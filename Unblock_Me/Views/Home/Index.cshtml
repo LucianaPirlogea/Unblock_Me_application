@@ -4,51 +4,76 @@
 }
 
 <style>
-    body{
+
+    .has-search .form-control {
+        padding-left: 2.375rem;
+    }
+
+    .has-search .form-control-feedback {
+        position: absolute;
+        z-index: 2;
+        display: block;
+        width: 2.375rem;
+        height: 2.375rem;
+        line-height: 2.375rem;
+        text-align: center;
+        pointer-events: none;
+    }
+
+    body {
         background-color: aqua;
     }
+
     .blocked {
         margin-top: 100px;
         margin-left: 500px;
         width: 200px;
         height: 100px;
     }
-    .blocked2 {
+
+    #blocked2 {
         margin-top: 10px;
         margin-left: 500px;
         width: 200px;
         height: 200px;
     }
+
     .input-group {
         margin-top: 50px;
     }
-    .input1{
+
+    .input1 {
         width: 90%;
     }
+
     .i_blocked {
         background-color: red;
     }
+
     .i_unblocked {
         background-color: greenyellow;
     }
 </style>
 
-<div class="text-center">
-    <h1 class="display-4">Search who blocked you</h1>
-
-</div>
 
 
-<form asp-action="Search" asp-controller="Home">
-    <div class="input-group">
-        <input class="input1" type="text" name="searchText">
-        <div>
-            <button type="submit">Search</button>
+<div class="container">
+    <form asp-action="Search" asp-controller="Home">
+        <div class="row">
+            <div class="col-12">
+                <div class="input-group">
+                    <input class="form-control border-secondary py-2" id="searchText" type="text" placeholder="Search who has blocked you" name="searchText">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="submit">
+                            Search
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-</form>
-
-
+    </form>
+</div>
 
 <form asp-action="I_blocked" asp-controller="Cars">
     <div class="blocked">
@@ -57,7 +82,21 @@
 </form>
 
 <form asp-action="I_unblocked" asp-controller="Cars">
-    <div class="blocked2">
+    <div id="blocked2">
         <button type="submit" class="i_unblocked">I unblocked someone</button>
     </div>
 </form>
+
+<!--
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#searchText").autocomplete({
+                source: 'Home/Search2'
+            });
+        });
+    </script>
+}-->
