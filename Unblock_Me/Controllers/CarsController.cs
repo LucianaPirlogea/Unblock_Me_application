@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -15,15 +16,19 @@ namespace Unblock_Me.Controllers
     public class CarsController : Controller
     {
         private readonly Unblock_MeContext _context;
+        private readonly UserManager<User> _userManager;
 
-        public CarsController(Unblock_MeContext context)
+        public CarsController(Unblock_MeContext context, UserManager<User> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         // GET: Cars
         public async Task<IActionResult> Index()
         {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            //var unblock_MeContext = _context.Car.Include(c => c.Owner).Select(car=>car.OwnerId==userId).ToList();
             var unblock_MeContext = _context.Car.Include(c => c.Owner);
             return View(await unblock_MeContext.ToListAsync());
         }
@@ -59,18 +64,20 @@ namespace Unblock_Me.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("LicencePlate,Maker,Model,Colour,BlockedLicencePlate,BlockedByLicencePlate,OwnerId")] Car car)
+        public async Task<IActionResult> Create(Car car)
         {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             if (ModelState.IsValid)
             {
                 _context.Add(car);
+                car.OwnerId = userId;
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             ViewData["OwnerId"] = new SelectList(_context.User, "Id", "Id", car.OwnerId);
             return View(car);
         }
-
+        
         // GET: Cars/Edit/5
         public async Task<IActionResult> Edit(string id)
         {

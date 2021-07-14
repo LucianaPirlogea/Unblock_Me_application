@@ -39,14 +39,14 @@ namespace Unblock_Me.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-        /*
+        
         [Produces("application/json")]
         [HttpGet("Search2")]
-        public async Task<IActionResult> Search2()
+        public IActionResult Search2()
         {
             try
             {
-                string term = HttpContext.Request.Query["term"].ToString();
+                string term = HttpContext.Request.Query["query"].ToString();
                 var postTitle = _dbContext.Car.Where(p => p.LicencePlate.Contains(term)).Select(p => p.LicencePlate).ToList();
                 return Ok(postTitle);
             }
@@ -55,7 +55,7 @@ namespace Unblock_Me.Controllers
                 return BadRequest();
             }
         }
-        */
+        
         public IActionResult DontExist()
         {
             return View();
@@ -67,7 +67,7 @@ namespace Unblock_Me.Controllers
                 return View(car);
             else
             {
-                return DontExist();
+                return BadRequest();
             }
         }
 
